@@ -1,0 +1,27 @@
+swater_land_episode_homepage:
+    path:     /
+    defaults: { _controller: SwaterLandEpisodeBundle:Default:index }
+
+swater_land_episode_show:
+    path:     /adminepisode/show/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:show}
+    requirements:
+      id: \d.*
+
+swater_land_episode_update:
+    path:     /adminepisode/edit/{id}
+    defaults: { _controller: SwaterLandEpisodeBundle:Episode:edit}
+    requirements:
+      id: \d.*
+
+swater_land_episode_new:
+    path:     /adminepisode/new
+    defaults: { _controller: SwaterLandEpisodeBundle:Episode:new}
+
+swater_land_episode_create:
+    path:     /adminepisode/create
+    defaults: { _controller: SwaterLandEpisodeBundle:Episode:create}
+
+swater_land_episode_delete:
+    path:     /adminepisode/delete/{id}
+    defaults: { _controller: SwaterLandEpisodeBundle:Episode:delete}

@@ -1,0 +1,7 @@
+swater_land_origine_origine:
+    resource: "@SwaterLandOrigineBundle/Resources/config/routing/origine.yml"
+    prefix:   /origine
+
+swater_land_origine_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SwaterLandOrigineBundle:Default:index }

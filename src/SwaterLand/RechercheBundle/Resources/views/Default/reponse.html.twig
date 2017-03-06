@@ -1,0 +1,292 @@
+
+{% extends '::base.html.twig' %}
+{% block title %}Recherche{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% block content %}
+    <div class= "contenu" align ="center">
+        <header>
+            <h1>Recherche</h1>
+            </br>
+        </header>
+
+            <section>
+                 <table>
+                     <form class="pull-right hidden" role="search" id="nav-search-form" method="post" action="{{ path('swater_land_recherche_reponse') }}">
+                         <div class="input-group">
+                             <input type="text" class="form-control" placeholder="Search" name ="search">
+                                  <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-default" value="recherche" style="height:32px;width:100px;background-color:grey;">
+                                  </span>
+                         </div>
+                     </form>
+                 </table>
+                 </br></br></br></br>
+                <div class ="contenurecherche">
+                {% if reb is defined %}
+                    {% for search in reb  %}
+                        <div class="cover_global_all">
+                            <div class="image_all" style="width:275px;">
+                                <img src="{{ search.image }}" />
+                            </div>
+                            <div id="info">
+                                <div class="titre_all">
+                                    <h2>{{ search.nom }}</h2>
+                                    </a>
+                                </div>
+                                <div class="genre_all">
+                                    <div class="element">Réalisateur : </div>
+                                    {% for realisateur in search.realisateurs %}
+                                        {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                    {%  endfor %}
+                                </div>
+                                <div class="genre_all">
+                                    <div class="element">Acteur :</div>
+                                    {% for acteur in search.acteurs %}
+                                        {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                    {%  endfor %}
+                                </div>
+                                <div class="genre_all">
+                                    <div class="element">Genre :</div>
+                                    {% for genre in search.genres %}
+                                        {{ genre.genre| truncate(22, true, '...') }}{{ loop.last ? '' : ', ' }}
+                                    {%  endfor %}
+                                </div>
+                                <div class="date_all">
+                                    <div class="element">Date :</div>
+                                    {{ search.date|date('Y') }}
+                                </div>
+                                <br>
+                                <div class="synopsis_all">
+                                    <div class="element">Synopsis :</div>
+                                    {{ search.synopsis | truncate(150, true, '...')}}
+                                </div>
+                                <a href='bluray/{{ search.id }}/{{ search.nom }}'> Voir plus</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if res is defined %}
+                    {% for search in res %}
+                        <div class="cover_global_all">
+                            <div class="image_all" style="width:275px;">
+                                <img src="{{ search.image }}" />
+                            </div>
+                            <div id="info">
+                                <div class="titre_all">
+                                    <h2>{{ search.nomannonce }}</h2>
+                                    </a>
+                                </div>
+                                <div class="genre_all">
+                                    <div class="element">Réalisateur : </div>
+                                    {% for realisateur in search.realisateurs %}
+                                        {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                    {%  endfor %}
+                                </div>
+                                <div class="genre_all">
+                                    <div class="element">Acteur :</div>
+                                    {% for acteur in search.acteurs %}
+                                        {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                    {%  endfor %}
+                                </div>
+                                <div class="genre_all">
+                                    <div class="element">Genre :</div>
+                                    {% for genre in search.genres %}
+                                        {{ genre.genre| truncate(22, true, '...') }}{{ loop.last ? '' : ', ' }}
+                                    {%  endfor %}
+                                </div>
+                                <div class="date_all">
+                                    <div class="element">Date :</div>
+                                    {{ search.date|date('Y') }}
+                                </div>
+                                <br>
+                                <div class="synopsis_all">
+                                    <div class="element">Synopsis :</div>
+                                    {{ search.synopsis | truncate(150, true, '...')}}
+                                </div>
+                                <a href='serie/{{ search.id }}/{{ search.nom }}'> Voir plus</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                    {% if foo is defined %}
+                        {% for search in red %}
+                            <div class="cover_global_all">
+                                <div class="image_all" style="width:275px;">
+                                    <img src="{{ search.image }}" />
+                                </div>
+                                <div id="info">
+                                    <div class="titre_all">
+                                        <h2>{{ search.nom }}</h2>
+                                        </a>
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Réalisateur : </div>
+                                        {% for realisateur in search.realisateurs %}
+                                            {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Acteur :</div>
+                                        {% for acteur in search.acteurs %}
+                                            {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Genre :</div>
+                                        {% for genre in search.genres %}
+                                            {{ genre.genre| truncate(22, true, '...') }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="date_all">
+                                        <div class="element">Date :</div>
+                                        {{ search.date|date('Y') }}
+                                    </div>
+                                    <br>
+                                    <div class="synopsis_all">
+                                        <div class="element">Synopsis :</div>
+                                        {{ search.synopsis | truncate(150, true, '...')}}
+                                    </div>
+                                    <a href='dvdrip/{{ search.id }}/{{ search.nom }}'> Voir plus</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if reab is defined %}
+                        {% for search in reab %}
+                            <div class="cover_global_all">
+                                <div class="image_all" style="width:275px;">
+                                    <img src="{{ search.image }}" />
+                                </div>
+                                <div id="info">
+                                    <div class="titre_all">
+                                        <h2>{{ search.nom }}</h2>
+                                        </a>
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Réalisateur : </div>
+                                        {% for realisateur in search.realisateurs %}
+                                            {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Acteur :</div>
+                                        {% for acteur in search.acteurs %}
+                                            {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Genre :</div>
+                                        {% for genre in search.genres %}
+                                            {{ genre.genre| truncate(22, true, '...') }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="date_all">
+                                        <div class="element">Date :</div>
+                                        {{ search.date|date('Y') }}
+                                    </div>
+                                    <br>
+                                    <div class="synopsis_all">
+                                        <div class="element">Synopsis :</div>
+                                        {{ search.synopsis | truncate(150, true, '...')}}
+                                    </div>
+                                    <a href='bluray/{{ search.id }}/{{ search.nom }}'> Voir plus</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if read is defined %}
+                        {% for search in read %}
+                            <div class="cover_global_all">
+                                <div class="image_all" style="width:275px;">
+                                    <img src="{{ search.image }}" />
+                                </div>
+                                <div id="info">
+                                    <div class="titre_all">
+                                        <h2>{{ search.nom }}</h2>
+                                        </a>
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Réalisateur : </div>
+                                        {% for realisateur in search.realisateurs %}
+                                            {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Acteur :</div>
+                                        {% for acteur in search.acteurs %}
+                                            {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Genre :</div>
+                                        {% for genre in search.genres %}
+                                            {{ genre.genre| truncate(22, true, '...') }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="date_all">
+                                        <div class="element">Date :</div>
+                                        {{ search.date|date('Y') }}
+                                    </div>
+                                    <br>
+                                    <div class="synopsis_all">
+                                        <div class="element">Synopsis :</div>
+                                        {{ search.synopsis | truncate(150, true, '...')}}
+                                    </div>
+                                    <a href='dvdrip/{{ search.id }}/{{ search.nom }}'> Voir plus</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if reas is defined %}
+                        {% for search in reas %}
+                            <div class="cover_global_all">
+                                <div class="image_all" style="width:275px;">
+                                    <img src="{{ search.image }}" />
+                                </div>
+                                <div id="info">
+                                    <div class="titre_all">
+                                        <h2>{{ search.nomannonce }} </h2>
+                                        </a>
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Réalisateur : </div>
+                                        {% for realisateur in search.realisateurs %}
+                                            {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Acteur :</div>
+                                        {% for acteur in search.acteurs %}
+                                            {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Genre :</div>
+                                        {% for genre in search.genres %}
+                                            {{ genre.genre| truncate(22, true, '...') }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="date_all">
+                                        <div class="element">Date :</div>
+                                        {{ search.date|date('Y') }}
+                                    </div>
+                                    <br>
+                                    <div class="synopsis_all">
+                                        <div class="element">Synopsis :</div>
+                                        {{ search.synopsis | truncate(150, true, '...')}}
+                                    </div>
+                                    <a href='serie/{{ search.id }}/{{ search.nom }}'> Voir plus</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+    {% endblock %}
+    {% else %}
+    <div class= "contenu" align ="center">
+    <a href="{{ path('fos_user_security_login') }}">Connectez-vous </a>
+    {% endif %}
+{% endblock %}

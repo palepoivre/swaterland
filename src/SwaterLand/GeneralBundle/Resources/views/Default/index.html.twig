@@ -1,0 +1,141 @@
+
+{% extends '::base.html.twig' %}
+{% block title %}Accueil{% endblock %}
+{% block body %}
+{% block content %}
+
+<div class= "contenu" align ="center">
+    <header>
+    </header>
+    <div id="Main-Content">
+        <div class="Container">
+            <!-- Flipster List -->
+            <div id="Carousel">
+                <ul class="flip-items">
+                    {% for exclu in exclus %}
+                        {% if  exclu.exclu == '1' %}
+                            <li id="Carousel-1" title="{{ exclu.nom }}" >
+                                <a href='bluray/{{ exclu.id }}/{{ exclu.nom }}'><img src="{{ exclu.image }}"></a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- End Flipster List -->
+        </div>
+    </div>
+    <article class="contenufull">
+        <section>
+            <img src="{{ asset('fondbluray.png') }}">
+
+            <div id ="contenuindex">
+                <table>
+                    <!-- Bluray List -->
+                    {% for bluray in blurays %}
+                        <div class="cover_global" style="height:300px;">
+                            <div id="infotitle">
+
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='bluray/{{ bluray.id }}/{{ bluray.nom }}'><img src="{{ bluray.image }}" />
+                                    </div>
+                                    <div class="name">
+                                        {{ bluray.nom }}
+                                        </a>
+                                    </div>
+                                    <div class="genre">
+
+                                        {% for genre in bluray.genres %}
+                                            {{ genre.genre|e }}
+                                        {%  endfor %}
+
+                                    </div>
+                                    <div class="date">
+                                       ( {{ bluray.date|date('Y') }})
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- End bluray List -->
+                </table>
+            </div>
+            </br></br></br>
+            <img src="{{ asset('fonddvdrip.png') }}">
+
+            <div id ="contenuindex">
+                <table>
+                    <!-- Dvdrip List -->
+                    {% for dvdrip in dvdrips %}
+                        <div class="cover_global" style="height:275px;">
+                            <div id="infotitle">
+
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='dvdrip/{{ dvdrip.id }}/{{ dvdrip.nom }}'><img src="{{ dvdrip.image }}" />
+                                    </div>
+                                    <div class="name">
+                                        {{ dvdrip.nom }}
+                                        </a>
+                                    </div>
+                                    <div class="genre">
+
+                                        {% for genre in dvdrip.genres %}
+                                            {{ genre.genre|e }}
+                                        {%  endfor %}
+
+                                    </div>
+                                    <div class="date">
+                                        ({{ dvdrip.date|date('Y') }})
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- End Dvdrip List -->
+                </table>
+            </div>
+
+            </br></br></br>
+            <img src="{{ asset('fondserie.png') }}">
+
+            <div id ="contenuindex">
+                <table>
+                    <!-- Serie List -->
+                    {% for serie in series %}
+                        <div class="cover_global" style="height:275px;">
+                            <div id="infotitle">
+
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='serie/{{ serie.id }}/{{ serie.nomannonce }}'><img src="{{ serie.image }}" />
+                                    </div>
+                                    <div class="name">
+                                        {{ serie.nomannonce }}
+                                        </a>
+                                    </div>
+                                    <div class="genre">
+
+                                        {% for genre in serie.genres %}
+                                            {{ genre.genre|e }}
+                                        {%  endfor %}
+
+                                    </div>
+                                    <div class="date">
+                                        ({{ serie.date|date('Y') }})
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- End Serie List -->
+                </table>
+            </div>
+        </section>
+    </article>
+
+    {% endblock %}
+{% endblock %}

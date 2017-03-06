@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %} - Mon Site de Streaming</title>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/index.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/hover.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/mediaelementplayer.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="{{ asset('css/demo.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/jquery.flipster.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/flipsternavtabs.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('css/icon-fonts.css') }}" type="text/css" media="all" />
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+{% block nav %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Swaterland</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('swater_land_general_homepage')}}">Accueil</a></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('swater_land_film_dvdrip')}}">Dvdrip</a></li>
+                <li><a href="{{ path('swater_land_film_bluray')}}">Bluray</a></li>
+                <li><a href="{{ path('swater_land_serie_homeserie')}}">Serie</a></li>
+                <li><a>
+                        <div id ="srcBox">
+                            <table>
+                    <form class="pull-right hidden" role="search" id="nav-search-form" method="post" action="{{ path('swater_land_recherche_reponse') }}">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name ="search">
+                            <span class="input-group-btn">
+                            <input type="submit" class="btn btn-default" value="recherche" style="width:100px;background-color:grey;">
+                          </span>
+                        </div>
+                    </form>
+                            </table>
+                               </div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><img class="avatar" src="{{ app.user.avatar }}" /></li>
+                <li><a>{{ app.user.username }}</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+
+                {# L'utilisateur est-il admin ? #}
+                {% if is_granted('ROLE_ADMIN') %}
+                {# L'utilisateur est admin ! #}
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('swater_land_dvdrip_new')}}">Dvdrip</a></li>
+                        <li><a href="{{ path('swater_land_bluray_new')}}">Bluray</a></li>
+                        <li><a href="{{ path('swater_land_serie_new')}}">Serie</a></li>
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('fos_user_security_login')}}">Connexion</a></li>
+                <li><a href="{{ path('fos_user_registration_register')}}">Inscription</a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+{% endblock %}
+{% block espace %}
+    <br><br><br>
+{% endblock %}
+
+{% block bandeau %}
+  <div class="inner cover">
+      <img src="{{ asset('bandesite.jpg') }}">
+  </div>
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+</br>
+{% block footer %}
+    <div class="footer_copyright">
+        <div class="container clearfix">
+            <div class="col-md-6">
+                <span class="footer_copy_text">Copyright &copy; 2015 Powered By <a href="#">PAL</a> - <a href="#">SwaterLand</a> - All Rights Reserved</span>
+            </div>
+            <div class="col-md-7 clearfix">
+                <ul class="footer_menu clearfix">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/mediaelement-and-player.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+    <!-- this is where we put our custom functions -->
+    <script type="text/javascript" src="{{ asset('js/functions.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jstorage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.json-2.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('//code.jquery.com/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.flipster.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('C:\wamp64\www\swaterland\vendor\egeloen\ckeditor-bundle\Resources\public\ckeditor.js') }}"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".boutoncolonne").click(function(){
+                $(".contenufullcolonne").toggle();
+                $(".contenufullligne").hide();
+                $(".boutonligne").prop('disabled', false);
+                $(".boutoncolonne").prop('disabled', true);
+            });
+        });
+        $(function() {
+            $(".boutonligne").click(function(){
+                $(".contenufullligne").toggle();
+                $(".contenufullcolonne").hide();
+                $(".boutoncolonne").prop('disabled', false);
+                $(".boutonligne").prop('disabled', true);
+            });
+        });
+    </script>
+    <script>
+        <!--
+
+        $(function(){
+
+            $("#Carousel").flipster({
+                itemContainer: 			'ul', // Contient les images
+                itemSelector: 			'li', // Selection des image dans le container
+                style:							'carousel', // Switch entre 'coverflow' ou 'carousel'
+                start: 							0, // Première image. on commence à 0, 'centré'.
+
+                enableKeyboard: 		true, // Navigation avec le clavier droite et gauche.
+                enableMousewheel: 	true, // Posibilité de scroll de haut en bas
+                enableTouch: 				true, // Navigation en cliquant sur l'image
+
+                onItemSwitch: 			function(){} // Fonction de rappel lorsque les éléments sont des commutateurs
+            });
+
+        });
+
+        -->
+    </script>
+    {#<script type="text/javascript">#}
+
+        {#$(document).ready(function(){ // Quand le document est complètement chargé#}
+
+            {#var load = false; // aucun chargement de commentaire n'est en cours#}
+
+            {#/* la fonction offset permet de récupérer la valeur X et Y d'un élément#}
+             {#dans une page. Ici on récupère la position du dernier div qui#}
+             {#a pour classe : ".commentaire" */#}
+            {#var offset = $('.cover_global:last').offset();#}
+
+            {#$(window).scroll(function(){ // On surveille l'évènement scroll#}
+
+                {#/* Si l'élément offset est en bas de scroll, si aucun chargement#}
+                 {#n'est en cours, si le nombre de commentaire affiché est supérieur#}
+                 {#à 5 et si tout les commentaires ne sont pas affichés, alors on#}
+                 {#lance la fonction. */#}
+                {#if((offset.top-$(window).height() <= $(window).scrollTop())#}
+                        {#&& load==false && ($('.cover_global').size()>=5) ){#}
+
+                    {#// la valeur passe à vrai, on va charger#}
+                    {#load = true;#}
+
+                    {#//On récupère l'id du dernier commentaire affiché#}
+                    {#var last_id = $('.cover_global:last').attr('id');#}
+
+                    {#//On affiche un loader#}
+                    {#$('.loadmore').show();#}
+
+                    {#//On lance la fonction ajax#}
+                    {#$.ajax({#}
+
+                        {#type: 'get',#}
+                        {#data: 'last='+last_id,#}
+
+                        {#//Succès de la requête#}
+                        {#success: function(data) {#}
+
+                            {#//On masque le loader#}
+                            {#$('.loadmore').fadeOut(500);#}
+                            {#/* On affiche le résultat après#}
+                             {#le dernier commentaire */#}
+                            {#$('.cover_global:last').after(data);#}
+                            {#/* On actualise la valeur offset#}
+                             {#du dernier commentaire */#}
+                            {#offset = $('.cover_global:last').offset();#}
+                            {#//On remet la valeur à faux car c'est fini#}
+                            {#load = false;#}
+                        {#}#}
+                    {#});#}
+                {#}#}
+
+
+            {#});#}
+
+        {#});#}
+
+    {#</script>#}
+{% endblock %}
+
+</body>
+</html>

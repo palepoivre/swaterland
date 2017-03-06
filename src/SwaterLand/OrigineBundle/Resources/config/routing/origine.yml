@@ -1,0 +1,30 @@
+origine:
+    path:     /
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:index" }
+
+origine_show:
+    path:     /{id}/show
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:show" }
+
+origine_new:
+    path:     /new
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:new" }
+
+origine_create:
+    path:     /create
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:create" }
+    methods:  POST
+
+origine_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:edit" }
+
+origine_update:
+    path:     /{id}/update
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:update" }
+    methods:  [POST, PUT]
+
+origine_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SwaterLandOrigineBundle:Origine:delete" }
+    methods:  [POST, DELETE]

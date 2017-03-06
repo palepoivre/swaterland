@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Films en Bluray</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Duree</th>
+                <th>Date</th>
+                <th>Synopsis</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('swater_land_bluray_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.duree }}</td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.synopsis }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('swater_land_bluray_show', { 'id': entity.id }) }}">voir sa fiche</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('swater_land_bluray_update', { 'id': entity.id }) }}">mettre à jour</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('swater_land_bluray_new') }}">
+                Création d'un film en Bluray
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

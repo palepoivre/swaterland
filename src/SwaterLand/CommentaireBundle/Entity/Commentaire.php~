@@ -1,0 +1,240 @@
+<?php
+
+namespace SwaterLand\CommentaireBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commentaire
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="SwaterLand\CommentaireBundle\Entity\CommentaireRepository")
+ */
+class Commentaire
+{
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SwaterLand\SerieBundle\Entity\Serie", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
+     */
+    private $serie_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SwaterLand\FilmBundle\Entity\Dvdrip", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="dvdrip_id", referencedColumnName="id")
+     */
+    private $dvdrip_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SwaterLand\FilmBundle\Entity\Bluray", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="bluray_id", referencedColumnName="id")
+     */
+    private $bluray_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SwaterLand\UserBundle\Entity\User", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user_id;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="commentaire", type="text")
+     */
+    private $commentaire;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validiter", type="smallint")
+     */
+    private $validiter;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime")
+     */
+    private $updated;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set commentaire
+     *
+     * @param text $commentaire
+     * @return Commentaire
+     */
+    public function setCommentaire($commentaire)
+    {
+        $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * Get commentaire
+     *
+     * @return Commentaire
+     */
+    public function getCommentaire()
+    {
+        return $this->commentaire;
+    }
+
+    /**
+     * Set validiter
+     *
+     * @param integer $validiter
+     * @return Commentaire
+     */
+    public function setValiditer($validiter)
+    {
+        $this->validiter = $validiter;
+
+        return $this;
+    }
+
+    /**
+     * Get validiter
+     *
+     * @return integer
+     */
+    public function getValiditer()
+    {
+        return $this->validiter;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Commentaire
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set bluray_id
+     *
+     * @param integer $bluray_id
+     * @return Commentaire
+     */
+    public function setBluray_id($bluray_id)
+    {
+        $this->bluray_id = $bluray_id;
+
+        return $this;
+    }
+
+    /**
+     * Get bluray_id
+     *
+     * @return integer
+     */
+    public function getBluray_id()
+    {
+        return $this->bluray_id;
+    }
+
+    /**
+     * Set dvdrip_id
+     *
+     * @param integer $dvdrip_id
+     * @return Commentaire
+     */
+    public function setDvdrip_id($dvdrip_id)
+    {
+        $this->dvdrip_id = $dvdrip_id;
+
+        return $this;
+    }
+
+    /**
+     * Get dvdrip_id
+     *
+     * @return integer
+     */
+    public function getDvdrip_id()
+    {
+        return $this->dvdrip_id;
+    }
+
+    /**
+     * Set serie_id
+     *
+     * @param integer $serie_id
+     * @return Commentaire
+     */
+    public function setSerie_id($serie_id)
+    {
+        $this->serie_id = $serie_id;
+
+        return $this;
+    }
+
+    /**
+     * Get serie_id
+     *
+     * @return integer
+     */
+    public function getSerie_id()
+    {
+        return $this->serie_id;
+    }
+
+    /**
+     * Set user_id
+     *
+     * @param integer $user_id
+     * @return Commentaire
+     */
+    public function setUser_id($user_id)
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Get user_id
+     *
+     * @return integer
+     */
+    public function getUser_id()
+    {
+        return $this->user_id;
+    }
+}

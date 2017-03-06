@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block content %}
+        <div class= "contenu" align ="center">
+            <h1>Mise à Jour d'un Film</h1>
+            <div class ="contenuadmin">
+                {{ form(edit_form) }}
+
+                <ul class="record_actions">
+                    <li>
+                        <a href="{{ path('swater_land_dvdrip_homepage') }}">
+                            Retour à la liste de des Dvdrip
+                        </a>
+                    </li>
+                    <li>{{ form(delete_form) }}</li>
+                </ul>
+            </div>
+    {% endblock %}
+{% endblock %}

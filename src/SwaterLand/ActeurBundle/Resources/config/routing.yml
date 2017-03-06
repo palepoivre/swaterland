@@ -1,0 +1,3 @@
+swater_land_acteur_acteur:
+    resource: "@SwaterLandActeurBundle/Resources/config/routing/acteur.yml"
+    prefix:   /acteur

@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% block content %}
+    <div class= "contenu" align ="center">
+        <h1>Mise à Jour d'une Serie</h1>
+        <div class ="contenuadmin">
+
+            {{ form(edit_form) }}
+
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('swater_land_serie_homepage') }}">
+                        Retour sur la liste des séries
+                    </a>
+                </li>
+                <li>{{ form(delete_form) }}</li>
+            </ul>
+        </div>
+    {% endblock %}
+{% endblock %}

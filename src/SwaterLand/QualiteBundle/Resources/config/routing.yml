@@ -1,0 +1,3 @@
+swater_land_qualite_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SwaterLandQualiteBundle:Default:index }

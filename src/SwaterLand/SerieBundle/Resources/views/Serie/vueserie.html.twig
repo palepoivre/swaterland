@@ -1,0 +1,150 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Serie{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% block content %}
+        <div class= "contenu" align ="center">
+        <article class="contenufull">
+            <section>
+                <table>
+                    <div class="autreserie">
+                        <div id="titre">
+                            <h1>
+                                Autres Saisons pour cette serie :
+                            </h1>
+                        </div>
+                        {% for serie in series %}
+                        {% for autreserie in autreseries %}
+                            {% if autreserie.saison != serie.saison %}
+                                {% if serie.nom == autreserie.nom %}
+                                    <div class="cover_global" style="height:275px;">
+                                        <div id="infotitle">
+                                            <div class="content">
+                                                <div class="image">
+                                                    <a href='{{ autreserie.nomannonce }}'><img src="{{ autreserie.image }}" />
+                                                </div>
+                                                <div class="name">
+                                                    {{ autreserie.nom }} Saison {{ autreserie.saison }}
+                                                    </a>
+                                                </div>
+                                                <div class="genre">
+                                                    Genre :
+                                                    {% for genre in serie.genres %}
+                                                        {{ genre.genre }}
+                                                    {%  endfor %}
+                                                </div>
+                                                <div class="date">
+                                                    ({{ autreserie.date|date('Y') }})
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div id="titre">
+                        <h1>
+                            {{ serie.nomannonce }}
+                        </h1>
+                    </div>
+                    </br>
+                    <div>
+                        <img src="{{ serie.image }}"/>
+                    </div>
+                    </br> </br> </br>
+                    <img src="{{ asset('http://img.streetprez.com/fr_FR/noir/information_film.png') }}">
+                    <div>
+                        Réalisateurs :
+                        {% for realisateur in serie.realisateurs %}
+                            {{ realisateur.realisateur }}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        Acteurs et Actrices :
+                        {% for acteur in serie.acteurs %}
+                            {{ acteur.acteur }}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        Origine :
+                        {% for origine in serie.origines %}
+                            {{ origine.origine }}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        Genre :
+                        {% for genre in serie.genres %}
+                            {{ genre.genre }}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        Date de sortie : {{ serie.date|date('d/m/Y') }}
+                    </div>
+                    </br> </br> </br>
+                    <img src="{{ asset('http://img.streetprez.com/fr_FR/noir/synopsis.png') }}">
+                    <div class ="contenu">
+                        {{ serie.synopsis }}
+                    </div>
+                    </br> </br> </br>
+                    <div>
+                        {% for episode in episodes %}
+                            {% if episode.saison == serie.saison %}
+                                <a href="/../../swaterland/web/serie/{{ serie.nom }} episode {{ episode.episode}}.avi"  ><h4> {{ serie.nom }} Saison {{ serie.saison }} Episode {{ episode.episode }} </h4></a>  <br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                     </br></br>
+                    {% for commentaire in commentaires %}
+                        {% if commentaire.seriesid == serie %}
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Edit Par :{{ commentaire.usersid }} Créé Le : {{ commentaire.updated|date('Y-m-d H:i:s') }}</div>
+                                <div class="panel-body">{{ commentaire.commentaire|raw }}</div>
+                            </div>
+                            </br></br>
+                        {% endif %}
+                    {% endfor %}
+                    <input name="swaterland_commentairebundle_commentaire" method="post" action="/swaterland/web/app_dev.php/commentaire/admincommentaire/create">
+
+
+                        <div id="swaterland_commentairebundle_commentaire"><div>
+
+                                {#<label for="swaterland_commentairebundle_commentaire_updated" class="required">Updated</label>#}<input id="swaterland_commentairebundle_commentaire_updated" name="swaterland_commentairebundle_commentaire[updated]" required="required" value="{{ "now"|date('Y-m-d H:i:s', 'Europe/Paris') }}" type="text" style="visibility: hidden; display: none;"></div>
+                            {#<div>#}
+                                {#<label for="swaterland_commentairebundle_commentaire_seriesid" class="required">Serie</label>#}
+                                <select id="swaterland_commentairebundle_commentaire_seriesid" name="swaterland_commentairebundle_commentaire[seriesid]" style="visibility: hidden; display: none;">
+                                    <option value="{{ serie.id }}" selected="selected">{{ serie.id }}</option></select></div><div>
+                                {#<label for="swaterland_commentairebundle_commentaire_usersid">Username</label>#}
+                                <select id="swaterland_commentairebundle_commentaire_usersid" name="swaterland_commentairebundle_commentaire[usersid]" style="visibility: hidden; display: none;">
+                                    <option value="{{ app.user.id }}" selected="selected">{{ app.user.username }}</option>
+
+                                </select></div><div>
+                                {#<label for="swaterland_commentairebundle_commentaire_validiter" class="required">Validiter</label>#}
+                                <input id="swaterland_commentairebundle_commentaire_validiter" name="swaterland_commentairebundle_commentaire[validiter]" required="required" value="1" type="checkbox" checked="checked" style="visibility:hidden" ></div><div>
+                                <label for="swaterland_commentairebundle_commentaire_commentaire" class="required">Commentaire</label>
+                                <textarea id="swaterland_commentairebundle_commentaire_commentaire" name="swaterland_commentairebundle_commentaire[commentaire]" style="visibility: hidden; display: none;"></textarea>
+
+                                <script type="text/javascript" src="/swaterland/web/bundles/ivoryckeditor/ckeditor.js"></script>
+                                <script type="text/javascript">
+
+                                    CKEDITOR.replace("swaterland_commentairebundle_commentaire_commentaire", {"uiColor":"#ffffff","language":"fr"});
+
+
+                                </script>
+
+                                <button class="btn btn-primary" type="submit" id="swaterland_commentairebundle_commentaire_submit" name="swaterland_commentairebundle_commentaire[submit]">Create</button></div>
+                            <input id="swaterland_commentairebundle_commentaire__token" name="swaterland_commentairebundle_commentaire[_token]" value="{{ csrf_token('swaterland_commentairebundle_commentaire') }}" type="hidden"/></div>
+                            </form>
+                        </br>
+                    {% endfor %}
+                </table>
+            </section>
+        </article>
+    {% endblock %}
+    {% else %}
+        <div class= "contenu" align ="center">
+        <a href="{{ path('fos_user_security_login') }}">Connectez-vous </a>
+    {% endif %}
+{% endblock %}

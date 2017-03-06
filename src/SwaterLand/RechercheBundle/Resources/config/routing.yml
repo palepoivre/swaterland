@@ -1,0 +1,12 @@
+swater_land_recherche_homepage:
+    path:     /
+    defaults: { _controller: SwaterLandRechercheBundle:Default:index }
+
+swater_land_recherche_reponse:
+    path:     /search
+    defaults: { _controller: SwaterLandRechercheBundle:Default:search }
+
+swater_land_recherche_reponsegenre:
+    path:     /genre={genres}
+    defaults: { _controller: SwaterLandRechercheBundle:Default:searchgenre }
+    requirements:

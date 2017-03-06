@@ -1,0 +1,99 @@
+{% extends '::base.html.twig' %}
+{% block title %}Recherche{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% block content %}
+    <div class= "contenu" align ="center">
+        <header>
+            <h1>Recherche</h1>
+            </br>
+        </header>
+
+            <section>
+                 <table>
+                     <form class="pull-right hidden" role="search" id="nav-search-form" method="post" action="{{ path('swater_land_recherche_reponse') }}">
+                         <div class="input-group">
+                             <input type="text" class="form-control" placeholder="Search" name ="search">
+                                  <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-default" value="recherche" style="height:32px;width:100px;background-color:grey;">
+                                  </span>
+                         </div>
+                     </form>
+                 </table>
+                <table>
+                    <form class="pull-right hidden" role="search" id="nav-search-form" method="post" action="{{ path('swater_land_recherche_reponsegenre') }}">
+                        <div>
+                        <span class="input-group-btn">
+                            <input class="form-control" placeholder="search" name ="search" value="Guerre" type="checkbox">
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" value="recherche" style="height:32px;width:100px;background-color:grey;">
+                            </span>
+                        </span>
+                        </div>
+                    </form>
+                </table>
+                 </br></br></br></br>
+                <div class ="contenurecherche">
+                    {% for search in rebg %}
+                        <div class="cover_global" style="height:264px;">
+                            <div id="infotitle">
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='/swaterland/web/app_dev.php/bluray/{{ search.id }}'><img src="{{ search.image }}" /></a>
+                                    </div>
+                                    <div class="name">
+                                        {{ search.nom }}
+                                        </a>
+                                    </div>
+                                    <div class="name">
+                                        {{ search.date|date('Y-m-d') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for search in resg %}
+                        <div class="cover_global" style="height:264px;">
+                            <div id="infotitle">
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='/swaterland/web/app_dev.php/serie/{{ search.id }}'><img src="{{ search.image }}" /></a>
+                                    </div>
+                                    <div class="name">
+                                        {{ search.nom }} Saison {{ search.saison }}
+                                        </a>
+                                    </div>
+                                    <div class="name">
+                                        {{ search.date|date('Y-m-d') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for search in redg %}
+                        <div class="cover_global" style="height:264px;">
+                            <div id="infotitle">
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='/swaterland/web/app_dev.php/dvdrip/{{ search.id }}'><img src="{{ search.image }}" /></a>
+                                    </div>
+                                    <div class="name">
+                                        {{ search.nom }}
+                                        </a>
+                                    </div>
+                                    <div class="name">
+                                        {{ search.date|date('Y-m-d') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+    {% endblock %}
+    {% else %}
+    <div class= "contenu" align ="center">
+    <a href="{{ path('fos_user_security_login') }}">Connectez-vous </a>
+    {% endif %}
+{% endblock %}

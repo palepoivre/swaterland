@@ -1,0 +1,114 @@
+
+{% extends '::base.html.twig' %}
+
+{% block title %}Bluray{% endblock %}
+{% block body %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+{% block content %}
+
+
+<div class= "contenu" align ="center">
+    <header>
+        <h1>Bluray</h1>
+        </br>
+    </header>
+
+    <article>
+        <section>
+            <div class="bouton">
+                <button id="btnligne" class="boutonligne"></button>
+                <button id="btncolonne" class="boutoncolonne" disabled="disabled"></button>
+            </div>
+            <div id="contenu_btncolonne" class="contenufullcolonne">
+                <table>
+                    {% for bluray in blurays %}
+                        <div class="cover_global" style="height:300px;">
+                            <div id="infotitle">
+                                <div class="content">
+                                    <div class="image">
+                                        <a href='bluray/{{ bluray.id }}/{{ bluray.nom }}'><img src="{{ bluray.image }}" />
+                                    </div>
+                                    <div class="name">
+                                        {{ bluray.nom }}
+                                        </a>
+                                    </div>
+                                    <div class="genre">
+                                        Genre :
+                                        {% for genre in bluray.genres %}
+                                            {{ genre.genre }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="date">
+                                        ({{ bluray.date|date('Y') }})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="navigation">
+                        {{ knp_pagination_render(blurays) }}
+                    </div>
+                </table>
+            </div>
+            <div id="contenu_btnligne" class ="contenufullligne">
+                <table>
+                    {% for bluray in blurays %}
+                            <div class="cover_global_all">
+
+                                <div class="image_all" style="width:275px;">
+                                    <img src="{{ bluray.image }}" />
+                                </div>
+
+                                <div id="info">
+                                    <div class="titre_all">
+                                        <h2>{{ bluray.nom }}</h2>
+                                        </a>
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Réalisateur :</div>
+                                        {% for realisateur in bluray.realisateurs %}
+                                            {{ realisateur.realisateur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Acteur :</div>
+                                        {% for acteur in bluray.acteurs %}
+                                            {{ acteur.acteur }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="genre_all">
+                                        <div class="element">Genre :</div>
+                                        {% for genre in bluray.genres %}
+                                            {{ genre.genre }}{{ loop.last ? '' : ', ' }}
+                                        {%  endfor %}
+                                    </div>
+                                    <div class="date_all">
+                                        <div class="element">Date :</div>
+                                        {{ bluray.date|date('Y') }}
+                                    </div>
+                                    <br>
+                                    <div class="synopsis_all">
+                                        <div class="element">Synopsis :</div>
+                                        {{ bluray.synopsis | truncate(150, true, '...')}}
+                                    </div>
+                                    <a href='bluray/{{ bluray.id }}/{{ bluray.nom }}'> Voir plus </a>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    <div class="navigation">
+                        {{ knp_pagination_render(blurays) }}
+                    </div>
+                </table>
+            </div>
+        </section>
+    </article>
+
+    {% endblock %}
+    {% else %}
+    <div class= "contenu" align ="center">
+        <a href="{{ path('fos_user_security_login') }}">Connectez-vous </a>
+    {% endif %}
+
+{% endblock %}
+

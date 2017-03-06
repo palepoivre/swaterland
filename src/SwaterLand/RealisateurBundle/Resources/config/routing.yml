@@ -1,0 +1,7 @@
+swater_land_realisateur_realisateur:
+    resource: "@SwaterLandRealisateurBundle/Resources/config/routing/realisateur.yml"
+    prefix:   /realisateur
+
+swater_land_realisateur_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SwaterLandRealisateurBundle:Default:index }

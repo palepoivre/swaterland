@@ -1,0 +1,27 @@
+swater_land_commentaire_homepage:
+    path:     /admincommentaire/
+    defaults: { _controller: "SwaterLandCommentaireBundle:Commentaire:index" }
+
+swater_land_commentaire_show:
+    path:     /admincommentaire/show/{id}
+    defaults: { _controller: SwaterLandCommentaireBundle:Commentaire:show}
+    requirements:
+      id: \d.*
+
+swater_land_commentaire_update:
+    path:     /admincommentaire/edit/{id}
+    defaults: { _controller: SwaterLandCommentaireBundle:Commentaire:edit}
+    requirements:
+      id: \d.*
+
+swater_land_commentaire_new:
+    path:     /admincommentaire/new
+    defaults: { _controller: SwaterLandCommentaireBundle:Commentaire:new}
+
+swater_land_commentaire_create:
+    path:     /admincommentaire/create
+    defaults: { _controller: SwaterLandCommentaireBundle:Commentaire:create}
+
+swater_land_commentaire_delete:
+    path:     /admincommetaire/delete/{id}
+    defaults: { _controller: SwaterLandCommentaireBundle:Commentaire:delete}

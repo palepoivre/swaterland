@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% block content %}
+        <div class= "contenu" align ="center">
+            <header>
+                <h1>creation d'un Film en Dvdrip</h1>
+            </header>
+
+            <div class ="contenuadmin">
+                <section>
+                    {{ form(form) }}
+
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('swater_land_dvdrip_homepage') }}">
+                                Retour à la liste de des Dvdrip
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+    {% endblock %}
+{% endblock %}

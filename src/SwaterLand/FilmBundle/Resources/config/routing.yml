@@ -1,0 +1,74 @@
+swater_land_bluray_homepage:
+    path:     /adminbluray
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:index}
+
+swater_land_bluray_show:
+    path:     /adminbluray/show/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:show}
+    requirements:
+      id: \d.*
+
+swater_land_bluray_update:
+    path:     /adminbluray/edit/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:edit}
+    requirements:
+      id: \d.*
+
+swater_land_bluray_new:
+    path:     /adminbluray/new
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:new}
+
+swater_land_bluray_create:
+    path:     /adminbluray/create
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:create}
+
+swater_land_bluray_delete:
+    path:     /adminbluray/delete/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:delete}
+
+
+swater_land_film_bluray:
+    path:     /bluray
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:bluray}
+
+swater_land_film_vuebluray:
+    path:     /bluray/{id}/{bluray}
+    defaults: { _controller: SwaterLandFilmBundle:Bluray:vuebluray}
+
+
+
+swater_land_dvdrip_homepage:
+    path:     /admindvdrip
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:index}
+
+swater_land_dvdrip_show:
+    path:     /admindvdrip/show/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:show}
+    requirements:
+      id: \d.*
+
+swater_land_dvdrip_update:
+    path:     /admindvdrip/edit/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:edit}
+    requirements:
+      id: \d.*
+
+swater_land_dvdrip_new:
+    path:     /admindvdrip/new
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:new}
+
+swater_land_dvdrip_create:
+    path:     /admindvdrip/create
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:create}
+
+swater_land_dvdrip_delete:
+    path:     /admindvdrip/delete/{id}
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:delete}
+
+
+swater_land_film_dvdrip:
+    path:     /dvdrip
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:dvdrip}
+swater_land_film_vuedvdrip:
+    path:     /dvdrip/{id}/{dvdrip}
+    defaults: { _controller: SwaterLandFilmBundle:Dvdrip:vuedvdrip}

@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block content %}
+        <div class= "contenu" align ="center">
+            <h1>Film en Bluray</h1>
+            <div class ="contenuadmin">
+                <table class="record_properties">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ entity.nom }}</td>
+                    <tr>
+                        <th>Duree</th>
+                        <td>{{ entity.duree }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Synopsis</th>
+                        <td>{{ entity.synopsis }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <ul class="record_actions">
+                    <li>
+                        <a href="{{ path('swater_land_bluray_homepage') }}">
+                            Retour sur la liste des Bluray
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('swater_land_bluray_update', { 'id': entity.id }) }}">
+                            Mettre à Jour
+                        </a>
+                    </li>
+                    <li>{{ form(delete_form) }}</li>
+                </ul>
+            </div>
+    {% endblock %}
+{% endblock %}

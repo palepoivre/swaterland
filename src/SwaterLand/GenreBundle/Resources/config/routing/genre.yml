@@ -1,0 +1,30 @@
+genre:
+    path:     /
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:index" }
+
+genre_show:
+    path:     /{id}/show
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:show" }
+
+genre_new:
+    path:     /new
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:new" }
+
+genre_create:
+    path:     /create
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:create" }
+    methods:  POST
+
+genre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:edit" }
+
+genre_update:
+    path:     /{id}/update
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:update" }
+    methods:  [POST, PUT]
+
+genre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SwaterLandGenreBundle:Genre:delete" }
+    methods:  [POST, DELETE]

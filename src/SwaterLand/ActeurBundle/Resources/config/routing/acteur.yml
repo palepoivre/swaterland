@@ -1,0 +1,30 @@
+acteur:
+    path:     /
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:index" }
+
+acteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:show" }
+
+acteur_new:
+    path:     /new
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:new" }
+
+acteur_create:
+    path:     /create
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:create" }
+    methods:  POST
+
+acteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:edit" }
+
+acteur_update:
+    path:     /{id}/update
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:update" }
+    methods:  [POST, PUT]
+
+acteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SwaterLandActeurBundle:Acteur:delete" }
+    methods:  [POST, DELETE]

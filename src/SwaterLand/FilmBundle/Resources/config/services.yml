@@ -1,0 +1,4 @@
+services:
+    swater_land_film.entity.Bluray:
+        class: SwaterLand\FilmBundle\Entity\Bluray
+        arguments: [SwaterLand\FilmBundle\Entity\Bluray]

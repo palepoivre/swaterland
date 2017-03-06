@@ -1,0 +1,39 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <div class="cover_global_all">
+        <div class="image_all" style="width:200px;">
+            <img src="{{ app.user.avatar }}"/>
+            <div class="titre_all">
+                {{ 'profile.show.username'|trans }}: {{ app.user.username }}
+            </div>
+            <div class="titre_all">
+                {{ 'profile.show.email'|trans }}: {{ app.user.email }}
+            </div>
+            {% for roles in app.user.roles %}
+                {{ roles }}
+            {% endfor %}
+            {% set count = 0 %}
+            {% for  commentaire in commentaires if commentaire.usersid == app.user.username %}
+
+                {% set count = count + 1 %}
+            {% endfor %}
+            <br>
+            {{ count }} Messages
+        </div>
+        <div id="info">
+            <h4>Tout les messages de {{ app.user.username }}</h4>
+            <div class="titre_commentaire">
+            {% for commentaire in commentaires %}
+                {% if commentaire.usersid == app.user.username  %}
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">  {{ commentaire.usersid }} </br> Créé Le : {{ commentaire.updated|date('Y-m-d H:i:s') }}</div>
+                        <div class="panel-body">{{ commentaire.commentaire|raw }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+        <a href="{{ path('fos_user_change_password')}}">Changer de mot de passe</a><a href="{{ path('fos_user_resetting_request')}}">Mot de passe oublié ?</a>
+    </div>
+</div>

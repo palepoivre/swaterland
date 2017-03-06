@@ -1,0 +1,124 @@
+<?php
+
+namespace SwaterLand\EpisodeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Episode
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="SwaterLand\EpisodeBundle\Entity\EpisodeRepository")
+ */
+class Episode
+{
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SwaterLand\SerieBundle\Entity\Serie", inversedBy="episodes")
+     * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
+     */
+    private $serie_id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="saison", type="integer")
+     */
+    private $saison;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="episode", type="integer")
+     */
+    private $episode;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set saison
+     *
+     * @param integer $saison
+     * @return Episode
+     */
+    public function setSaison($saison)
+    {
+        $this->saison = $saison;
+
+        return $this;
+    }
+
+    /**
+     * Get saison
+     *
+     * @return integer
+     */
+    public function getSaison()
+    {
+        return $this->saison;
+    }
+
+    /**
+     * Set episode
+     *
+     * @param integer $episode
+     * @return Episode
+     */
+    public function setEpisode($episode)
+    {
+        $this->episode = $episode;
+
+        return $this;
+    }
+
+    /**
+     * Get episode
+     *
+     * @return integer
+     */
+    public function getEpisode()
+    {
+        return $this->episode;
+    }
+
+    /**
+     * Set serie_id
+     *
+     * @param integer $serie_id
+     * @return Episode
+     */
+    public function setSerie_id($serie_id)
+    {
+        $this->serie_id = $serie_id;
+
+        return $this;
+    }
+
+    /**
+     * Get serie_id
+     *
+     * @return integer
+     */
+    public function getSerie_id()
+    {
+        return $this->serie_id;
+    }
+}

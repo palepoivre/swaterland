@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block content %}
+    <div class= "contenu" align ="center">
+    <h1>Serie</h1>
+        <div class ="contenuadmin">
+            <table class="record_properties">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ entity.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Image</th>
+                        <td>{{ entity.image }}</td>
+                    </tr>
+                    <tr>
+                        <th>Saison</th>
+                        <td>{{ entity.saison }}</td>
+                    </tr>
+                    <tr>
+                        <th>Duree</th>
+                        <td>{{ entity.duree }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Synopsis</th>
+                        <td>{{ entity.synopsis }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                <ul class="record_actions">
+            <li>
+                <a href="{{ path('swater_land_serie_homepage') }}">
+                    Retour sur la liste des séries
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('swater_land_serie_update', { 'id': entity.id }) }}">
+                    Mise à Jour
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+        </div>
+    {% endblock %}
+{% endblock %}

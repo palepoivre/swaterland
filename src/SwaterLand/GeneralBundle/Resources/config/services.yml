@@ -1,0 +1,4 @@
+services:
+#    swater_land_general.example:
+#        class: SwaterLand\GeneralBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

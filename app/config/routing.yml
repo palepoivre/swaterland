@@ -1,0 +1,51 @@
+swater_land_qualite:
+    resource: "@SwaterLandQualiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+swater_land_commentaire:
+    resource: "@SwaterLandCommentaireBundle/Resources/config/routing.yml"
+    prefix:   /commentaire
+
+swater_land_episode:
+    resource: "@SwaterLandEpisodeBundle/Resources/config/routing.yml"
+    prefix:   /episode
+
+swater_land_recherche:
+    resource: "@SwaterLandRechercheBundle/Resources/config/routing.yml"
+    prefix:   /recherche
+
+swater_land_general:
+    resource: "@SwaterLandGeneralBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+swater_land_serie:
+    resource: "@SwaterLandSerieBundle/Resources/config/routing.yml"
+    prefix:   /serie
+
+swater_land_acteur:
+    resource: "@SwaterLandActeurBundle/Resources/config/routing.yml"
+    prefix:   /acteur
+
+swater_land_origine:
+    resource: "@SwaterLandOrigineBundle/Resources/config/routing.yml"
+    prefix:   /origine
+
+swater_land_realisateur:
+    resource: "@SwaterLandRealisateurBundle/Resources/config/routing.yml"
+    prefix:   /realisateur
+
+swater_land_genre:
+    resource: "@SwaterLandGenreBundle/Resources/config/routing.yml"
+    prefix:   /genre
+
+swater_land_film:
+    resource: "@SwaterLandFilmBundle/Resources/config/routing.yml"
+    prefix:   /
+
+SwaterLand_user:
+    resource: "@SwaterLandUserBundle/Resources/config/routing.yml"
+    prefix:   /

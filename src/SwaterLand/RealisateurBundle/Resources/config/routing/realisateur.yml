@@ -1,0 +1,30 @@
+realisateur:
+    path:     /
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:index" }
+
+realisateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:show" }
+
+realisateur_new:
+    path:     /new
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:new" }
+
+realisateur_create:
+    path:     /create
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:create" }
+    methods:  POST
+
+realisateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:edit" }
+
+realisateur_update:
+    path:     /{id}/update
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:update" }
+    methods:  [POST, PUT]
+
+realisateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SwaterLandRealisateurBundle:Realisateur:delete" }
+    methods:  [POST, DELETE]

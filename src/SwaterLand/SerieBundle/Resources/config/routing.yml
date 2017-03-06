@@ -1,0 +1,37 @@
+swater_land_serie_homepage:
+    path:     /adminserie
+    defaults: { _controller: SwaterLandSerieBundle:Serie:index}
+
+swater_land_serie_show:
+    path:     /show/{id}
+    defaults: { _controller: SwaterLandSerieBundle:Serie:show}
+    requirements:
+      id: \d.*
+
+swater_land_serie_update:
+    path:     /edit/{id}
+    defaults: { _controller: SwaterLandSerieBundle:Serie:edit}
+    requirements:
+      id: \d.*
+
+swater_land_serie_new:
+    path:     /new
+    defaults: { _controller: SwaterLandSerieBundle:Serie:new}
+
+swater_land_serie_create:
+    path:     /create
+    defaults: { _controller: SwaterLandSerieBundle:Serie:create}
+
+swater_land_serie_delete:
+    path:     /delete/{id}
+    defaults: { _controller: SwaterLandSerieBundle:Serie:delete}
+
+swater_land_serie_homeserie:
+    path:     /
+    defaults: { _controller: SwaterLandSerieBundle:Serie:serie}
+
+swater_land_serie_vueserie:
+    path:     /{id}/{serie}
+    defaults: { _controller: SwaterLandSerieBundle:Serie:vueserie}
+    requirements:
+      id: \d.*

@@ -1,0 +1,11 @@
+swater_land_genre_genre:
+    resource: "@SwaterLandGenreBundle/Resources/config/routing/genre.yml"
+    prefix:   /genre
+
+swater_land_genre_homepage:
+    path:     /genre
+    defaults: { _controller: SwaterLandGenreBundle:Default:index }
+
+swater_land_genre_search:
+    path:     /recherche
+    defaults: { _controller: SwaterLandGenreBundle:Default:searchGenre }
